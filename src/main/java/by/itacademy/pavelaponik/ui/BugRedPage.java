@@ -8,12 +8,13 @@ public class BugRedPage {
 
     public final String URL = "http://users.bugred.ru/user/login/index.html";
     public final String NAME_EXPECTED = "Имя";
-    public final String NAME_AFTER_REGISTRATION_EXPECTED = "bobik22";
+    public final String NAME_AFTER_REGISTRATION_EXPECTED = "bobik1234";
 
     public final String EMAIL_EXPECTED = "Email";
     public final String PASSWORD_EXPECTED = "Пароль";
     public final String REGISTER_EXPECTED = "Зарегистрироваться";
     public final String REGISTRATION_EXPECTED = "Регистрация";
+    public final String INVALID_EMAIL_EXPECTED = "Неправильное значение поля (email)";
 
     public final String xPathName = "//*[text() = 'Имя']";
     public final String xPathEmail = "//h2[text() = 'Регистрация']//..//*[text() = 'Email']";
@@ -26,6 +27,8 @@ public class BugRedPage {
     public final String xPathInputPassword = "//h2[text() = 'Регистрация']//..//input[@name = 'password']";
 
     public final String xPathNameAfterRegistration = "//a[@class = 'dropdown-toggle']";
+
+    public final String xPathEmailInvalid = "//form[@action = '/user/register/index.html']/p";
 
 
 
@@ -70,21 +73,21 @@ public class BugRedPage {
     public void inputName(){
         By byInputName = By.xpath(xPathInputName);
         WebElement webElementInputName = driver.findElement(byInputName);
-        String name = "bobik22";
+        String name = "bobik1234";
         webElementInputName.sendKeys(name);
     }
 
     public void inputEmail(){
         By byInputEmail = By.xpath(xPathInputEmail);
         WebElement webElementInputName = driver.findElement(byInputEmail);
-        String email = "bobik22@gmail.com";
+        String email = "bobik1234@gmail.com";
         webElementInputName.sendKeys(email);
     }
 
     public void inputPassword(){
         By byInputPassword = By.xpath(xPathInputPassword);
         WebElement webElementInputName = driver.findElement(byInputPassword);
-        String password = "bobik22";
+        String password = "bobik1234";
         webElementInputName.sendKeys(password);
     }
 
@@ -98,6 +101,19 @@ public class BugRedPage {
         By byTextNameAfterRegistration = By.xpath(xPathNameAfterRegistration);
         WebElement webElementTextNameAfterRegistration = driver.findElement(byTextNameAfterRegistration);
         return webElementTextNameAfterRegistration.getText();
+    }
+
+    public void inputInvalidEmail(){
+        By byInputInvalidEmail = By.xpath(xPathInputEmail);
+        WebElement webElementInputInvalidEmail = driver.findElement(byInputInvalidEmail);
+        String email = "bobik1234";
+        webElementInputInvalidEmail.sendKeys(email);
+    }
+
+    public String getTextEmailAfterInvalidEmailRegistration(){
+        By byTextEmailAfterInvalidEmailRegistration = By.xpath(xPathEmailInvalid);
+        WebElement webElementTextEmailAfterInvalidEmailRegistration = driver.findElement(byTextEmailAfterInvalidEmailRegistration);
+        return webElementTextEmailAfterInvalidEmailRegistration.getText();
     }
 
 

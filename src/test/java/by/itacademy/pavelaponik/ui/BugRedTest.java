@@ -40,4 +40,21 @@ public class BugRedTest extends BaseTest {
     }
 
 
+    @Test
+    public void testBugRedFillInTheFormWithInvalidDataEmail() {
+
+        BugRedPage bugRedPage = new BugRedPage(driver);
+
+        bugRedPage.openBugRedPage();
+        bugRedPage.inputName();
+        bugRedPage.inputInvalidEmail();
+        bugRedPage.inputPassword();
+        bugRedPage.clickOnButtonRegistrate();
+
+        String actualTextErrorAfterRegistrationWithInvalidEmail = bugRedPage.getTextEmailAfterInvalidEmailRegistration();
+
+        Assertions.assertEquals(bugRedPage.INVALID_EMAIL_EXPECTED, actualTextErrorAfterRegistrationWithInvalidEmail );
+    }
+
+
 }
