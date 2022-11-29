@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class BugRedTest extends BaseTest {
     @Test
-    public void testBugRed() {
+    public void testBugRedGetText() {
 
         BugRedPage bugRedPage = new BugRedPage(driver);
 
@@ -22,6 +22,22 @@ public class BugRedTest extends BaseTest {
         Assertions.assertEquals(bugRedPage.REGISTER_EXPECTED, actualTextRegister);
         Assertions.assertEquals(bugRedPage.REGISTRATION_EXPECTED, actualTextRegistration);
 
-
     }
+    @Test
+    public void testBugRedFillInTheFormOfRegistration() {
+
+        BugRedPage bugRedPage = new BugRedPage(driver);
+
+        bugRedPage.openBugRedPage();
+        bugRedPage.inputName();
+        bugRedPage.inputEmail();
+        bugRedPage.inputPassword();
+        bugRedPage.clickOnButtonRegistrate();
+
+        String actualTextNameAfterRegistration = bugRedPage.getTextNameAfterRegistration();
+
+        Assertions.assertEquals(bugRedPage.NAME_AFTER_REGISTRATION_EXPECTED, actualTextNameAfterRegistration );
+    }
+
+
 }
